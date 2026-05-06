@@ -5,6 +5,7 @@ interface MacbookState {
   scale: number;
   setColor: (color: string) => void;
   setScale: (scale: number) => void;
+  reset: () => void;
 }
 
 const useMacbookStore = create<MacbookState>((set) => ({

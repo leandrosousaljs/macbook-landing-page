@@ -8,9 +8,13 @@ Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b3031
 Title: macbook pro M3 16 inch 2024
 */
 
+import { useEffect, type ComponentProps } from 'react';
 import * as THREE from 'three';
 import { useGLTF, useTexture } from '@react-three/drei';
 import type { GLTF } from 'three-stdlib';
+
+import useMacbookStore from '../../store';
+import { noChangeParts } from '../../constants';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -55,13 +59,25 @@ type GLTFResult = GLTF & {
     sfCQkHOWyrsLmor: THREE.MeshStandardMaterial;
     ZCDwChwkbBfITSW: THREE.MeshStandardMaterial;
   };
-  animations: GLTFAction[];
 };
 
-export default function MacbookModel16(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/models/macbook-16-transformed.glb') as GLTFResult;
+export default function MacbookModel16(props: ComponentProps<'group'>) {
+  const { nodes, materials, scene } = useGLTF('/models/macbook-16-transformed.glb') as unknown as GLTFResult;
+
+  const { color } = useMacbookStore();
 
   const texture = useTexture('/screen.png');
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      const mesh = child as THREE.Mesh;
+      if (!mesh.isMesh || noChangeParts.includes(mesh.name)) return;
+
+      const material = mesh.material;
+      if (Array.isArray(material) || !(material instanceof THREE.MeshStandardMaterial)) return;
+      material.color.set(color);
+    });
+  }, [color, scene]);
 
   return (
     <group {...props} dispose={null}>

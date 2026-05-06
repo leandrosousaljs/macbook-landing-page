@@ -8,8 +8,9 @@ Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b3031
 Title: macbook pro M3 16 inch 2024
 */
 
+import type { ComponentProps } from 'react';
 import * as THREE from 'three';
-import { useGLTF, useTexture } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import type { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
@@ -55,13 +56,10 @@ type GLTFResult = GLTF & {
     sfCQkHOWyrsLmor: THREE.MeshStandardMaterial;
     ZCDwChwkbBfITSW: THREE.MeshStandardMaterial;
   };
-  animations: GLTFAction[];
 };
 
-export default function MacbookModel(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/models/macbook-transformed.glb') as GLTFResult;
-
-  // const texture = useTexture();
+export default function MacbookModel(props: ComponentProps<'group'>) {
+  const { nodes, materials } = useGLTF('/models/macbook-transformed.glb') as unknown as GLTFResult;
 
   return (
     <group {...props} dispose={null}>
