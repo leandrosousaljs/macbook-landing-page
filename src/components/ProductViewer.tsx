@@ -20,10 +20,16 @@ const ProductViewer = () => {
           <div className="color-control">
             <div
               onClick={() => setColor('#ADB5BD')}
+              role="button"
+              aria-label="Space Gray"
+              aria-pressed={color === '#ADB5BD'}
               className={clsx('bg-neutral-300', color === '#ADB5BD' && 'active')}
             />
             <div
               onClick={() => setColor('#2E2C2E')}
+              role="button"
+              aria-label="Dark"
+              aria-pressed={color === '#2E2C2E'}
               className={clsx('bg-neutral-900', color === '#2E2C2E' && 'active')}
             />
           </div>
@@ -31,12 +37,18 @@ const ProductViewer = () => {
           <div className="size-control">
             <div
               onClick={() => setScale(0.06)}
+              role="button"
+              aria-label={'14"'}
+              aria-pressed={scale === 0.06}
               className={clsx(scale === 0.06 ? 'bg-white text-black' : 'bg-transparent text-white')}
             >
               <p>14"</p>
             </div>
             <div
               onClick={() => setScale(0.08)}
+              role="button"
+              aria-label={'16"'}
+              aria-pressed={scale === 0.08}
               className={clsx(scale === 0.08 ? 'bg-white text-black' : 'bg-transparent text-white')}
             >
               <p>16"</p>
