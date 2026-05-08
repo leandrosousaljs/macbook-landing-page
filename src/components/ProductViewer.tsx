@@ -18,16 +18,14 @@ const ProductViewer = () => {
         <p className="info">MacbookPro | Available in 14" & 16" in Space Gray & Dark colors</p>
         <div className="flex-center gap-5 mt-5">
           <div className="color-control">
-            <div
+            <button
               onClick={() => setColor('#ADB5BD')}
-              role="button"
               aria-label="Space Gray"
               aria-pressed={color === '#ADB5BD'}
               className={clsx('bg-neutral-300', color === '#ADB5BD' && 'active')}
             />
-            <div
+            <button
               onClick={() => setColor('#2E2C2E')}
-              role="button"
               aria-label="Dark"
               aria-pressed={color === '#2E2C2E'}
               className={clsx('bg-neutral-900', color === '#2E2C2E' && 'active')}
@@ -35,24 +33,22 @@ const ProductViewer = () => {
           </div>
 
           <div className="size-control">
-            <div
+            <button
               onClick={() => setScale(0.06)}
-              role="button"
-              aria-label={'14"'}
+              aria-label='14"'
               aria-pressed={scale === 0.06}
               className={clsx(scale === 0.06 ? 'bg-white text-black' : 'bg-transparent text-white')}
             >
               <p>14"</p>
-            </div>
-            <div
+            </button>
+            <button
               onClick={() => setScale(0.08)}
-              role="button"
-              aria-label={'16"'}
+              aria-label='16"'
               aria-pressed={scale === 0.08}
               className={clsx(scale === 0.08 ? 'bg-white text-black' : 'bg-transparent text-white')}
             >
               <p>16"</p>
-            </div>
+            </button>
           </div>
         </div>
       </div>

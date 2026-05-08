@@ -50,7 +50,7 @@ const ModelSwitcher = ({ scale, isMobile }: { scale: number; isMobile: boolean }
       fadeMeshes(smallMacbookRef.current, 1);
       fadeMeshes(largeMacbookRef.current, 0);
     }
-  }, [scale, isMobile]);
+  }, [scale]);
 
   const controlsConfig = {
     snap: true,
