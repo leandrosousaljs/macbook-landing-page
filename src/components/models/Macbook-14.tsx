@@ -64,7 +64,7 @@ type GLTFResult = GLTF & {
 export default function MacbookModel14(props: ComponentProps<'group'>) {
   const { nodes, materials, scene } = useGLTF('/models/macbook-14-transformed.glb') as unknown as GLTFResult;
 
-  const { color } = useMacbookStore();
+  const color = useMacbookStore((state) => state.color);
 
   const texture = useTexture('/screen.png');
 
@@ -110,7 +110,7 @@ export default function MacbookModel14(props: ComponentProps<'group'>) {
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor} rotation={[Math.PI / 2, 0, 0]}>
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
         <meshBasicMaterial map={texture} />
       </mesh>
       <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />

@@ -8,7 +8,7 @@ interface MacbookState {
   reset: () => void;
 }
 
-const DEFAULT_COLOR: string = '#2E2C2E';
+const DEFAULT_COLOR: string = '#ADB5BD';
 const DEFAULT_SCALE: number = 0.08;
 
 const useMacbookStore = create<MacbookState>((set) => ({
