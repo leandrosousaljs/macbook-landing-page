@@ -110,7 +110,7 @@ export default function MacbookModel16(props: ComponentProps<'group'>) {
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor} rotation={[Math.PI / 2, 0, 0]}>
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
         <meshBasicMaterial map={texture} />
       </mesh>
       <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />
