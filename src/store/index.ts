@@ -12,7 +12,7 @@ interface MacbookState {
 
 const DEFAULT_COLOR = '#ADB5BD';
 const DEFAULT_SCALE = 0.08;
-const DEFAULT_TEXTURE = 'videos/feature-1.mp4';
+const DEFAULT_TEXTURE = '/videos/feature-1.mp4';
 
 const useMacbookStore = create<MacbookState>((set) => ({
   color: DEFAULT_COLOR,
