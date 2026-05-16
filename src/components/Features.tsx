@@ -21,7 +21,7 @@ const ModelScroll = () => {
     featureSequence.forEach((feat) => {
       const v = document.createElement('video');
 
-      Object.assign({
+      Object.assign(v, {
         src: feat.videoPath,
         muted: true,
         playsInline: true,
