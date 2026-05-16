@@ -6,7 +6,7 @@ const Highlights = () => {
   const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
 
   useGSAP(() => {
-    gsap.to(['.left-column', '.right-column '], {
+    gsap.to(['.left-column', '.right-column'], {
       scrollTrigger: {
         trigger: '#highlights',
         start: isTablet ? 'bottom bottom' : 'top top',
@@ -17,7 +17,7 @@ const Highlights = () => {
       duration: 1,
       ease: 'power1.inOut',
     });
-  }, []);
+  }, [isTablet]);
 
   return (
     <section id="highlights">
