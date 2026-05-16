@@ -67,7 +67,14 @@ const Performance = () => {
 
       <div className="wrapper">
         {performanceImages.map((item, index) => (
-          <img key={index} className={item.id} src={item.src} alt={`Performance Image #${index + 1}`} />
+          <img
+            key={index}
+            className={item.id}
+            src={item.src}
+            alt={`Performance Image #${index + 1}`}
+            loading="lazy"
+            decoding="async"
+          />
         ))}
       </div>
 
