@@ -8,10 +8,13 @@ Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b3031
 Title: macbook pro M3 16 inch 2024
 */
 
-import type { ComponentProps } from 'react';
+import { useEffect, type ComponentProps } from 'react';
 import * as THREE from 'three';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, useVideoTexture } from '@react-three/drei';
 import type { GLTF } from 'three-stdlib';
+
+import useMacbookStore from '../../store';
+import { noChangeParts } from '../../constants';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -59,7 +62,22 @@ type GLTFResult = GLTF & {
 };
 
 export default function MacbookModel(props: ComponentProps<'group'>) {
-  const { nodes, materials } = useGLTF('/models/macbook-transformed.glb') as unknown as GLTFResult;
+  const { nodes, materials, scene } = useGLTF('/models/macbook-transformed.glb') as unknown as GLTFResult;
+
+  const { color, texture } = useMacbookStore();
+
+  const screen = useVideoTexture(texture);
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      const mesh = child as THREE.Mesh;
+      if (!mesh.isMesh || noChangeParts.includes(mesh.name)) return;
+
+      const material = mesh.material;
+      if (Array.isArray(material) || !(material instanceof THREE.MeshStandardMaterial)) return;
+      material.color.set(color);
+    });
+  }, [color, scene]);
 
   return (
     <group {...props} dispose={null}>
@@ -92,7 +110,9 @@ export default function MacbookModel(props: ComponentProps<'group'>) {
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
+        <meshBasicMaterial map={screen} />
+      </mesh>
       <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />
     </group>
   );
