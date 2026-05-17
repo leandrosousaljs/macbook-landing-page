@@ -399,7 +399,7 @@ body {
         @apply text-sm font-medium;
 
         span {
-          @apply text-primary mx-0.5;
+          @apply text-primary mx-0.5 cursor-pointer underline;
         }
       }
     }
