@@ -256,7 +256,7 @@ body {
       }
 
       .p5 {
-        @apply absolute bottom-[20%] left-1/2 -translate-x-1/2 scale-150;
+        @apply absolute bottom-[20%] left-1/2 -translate-x-1/2 scale-150 z-0;
       }
 
       .p6 {
@@ -398,8 +398,8 @@ body {
       p {
         @apply text-sm font-medium;
 
-        span {
-          @apply text-primary mx-0.5;
+        a {
+          @apply text-primary mx-0.5 cursor-pointer underline;
         }
       }
     }
