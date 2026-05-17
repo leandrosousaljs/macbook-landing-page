@@ -5,8 +5,8 @@ const Footer = () => {
     <footer>
       <div className="info">
         <p>
-          More ways to shop: <span>Find an Apple Store</span> or <span>other retailer</span> near you. Or call 0800 040
-          1966.
+          More ways to shop: <a href="#">Find an Apple Store</a> or <a href="#">other retailer</a> near you. Or call
+          0800 040 1966.
         </p>
         <img src="/logo.svg" alt="Apple Logo" />
       </div>

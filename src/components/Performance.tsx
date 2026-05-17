@@ -12,6 +12,7 @@ const Performance = () => {
   useGSAP(
     () => {
       const sectionEl = sectionRef.current;
+      const centerImageEl = sectionEl?.querySelector('.p5');
 
       if (!sectionEl) return;
 
@@ -35,27 +36,30 @@ const Performance = () => {
       if (isTablet) return;
 
       const tl = gsap.timeline({
-        defaults: { duration: 2, ease: 'power1.inOut', overwrite: 'auto' },
+        defaults: { duration: 1, ease: 'power1.inOut', overwrite: 'auto' },
         scrollTrigger: {
-          trigger: sectionEl,
+          trigger: centerImageEl ?? sectionEl,
           start: 'top bottom',
-          end: 'bottom top',
+          end: 'center center',
           scrub: 1,
           invalidateOnRefresh: true,
         },
       });
 
+      const outerTargets: Record<string, { left?: string; right?: string; bottom?: string }> = {
+        p1: { left: '0%', bottom: '72%' },
+        p2: { right: '2%', bottom: '69%' },
+        p3: { right: '-10%', bottom: '50%' },
+        p4: { right: '-15%', bottom: '7%' },
+        p6: { left: '4%', bottom: '38%' },
+        p7: { left: '-8%', bottom: '5%' },
+      };
+
       performanceImgPositions.forEach((item) => {
         if (item.id === 'p5') return;
 
         const selector = `.${item.id}`;
-        const vars: { left?: string; right?: string; bottom?: string } = {};
-
-        if (typeof item.left === 'number') vars.left = `${item.left}%`;
-        if (typeof item.right === 'number') vars.right = `${item.right}%`;
-        if (typeof item.bottom === 'number') vars.bottom = `${item.bottom}%`;
-
-        tl.to(selector, vars, 0);
+        tl.to(selector, outerTargets[item.id] ?? {}, 0);
       });
     },
     { scope: sectionRef, dependencies: [isTablet] },
