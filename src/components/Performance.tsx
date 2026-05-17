@@ -33,8 +33,6 @@ const Performance = () => {
         },
       );
 
-      if (isTablet) return;
-
       const tl = gsap.timeline({
         defaults: { duration: 1, ease: 'power1.inOut', overwrite: 'auto' },
         scrollTrigger: {
